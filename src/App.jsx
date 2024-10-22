@@ -1,19 +1,30 @@
 import "./App.css";
-import Articulo from "./Articulo";
+import Card from "./Components/Card";
+// import Navbar, { Logo } from "./Components/Navbar";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
     <>
-      <h1>Hola Camada 3!!</h1>
-      <p>Este es mi primer proyecto</p>
-      <ul>
-        <li>Elemento 1</li>
-        <li>Elemento 2</li>
-        <li>Elemento 3</li>
-        <li>Elemento 4</li>
-        <li>Elemento 5</li>
-      </ul>
-      <Articulo />
+      {/* <Logo /> */}
+      <Navbar />
+      <h1>Bienvenidos al proyecto recetas</h1>
+      <Card title="Receta 1" text="Como hacer que la carne quede jugosa" />
+      <Card
+        title="Acá va la receta 2"
+        text="Hace licuado de lo que quieras con esta receta"
+      />
+      <Card title="Esta es mi tercer receta" text="Como hacer fideos" />
+      <hr />
+      <h2>Quienes somos</h2>
+      <Card title="Thiare Cerpa" text="Diseño UX/UI">
+        <h5>Behance</h5>
+        <h4>Linkedin</h4>
+        <input type="text" />
+      </Card>
+      <Card title="Yerson Ramos Sullon" text="Marketing y Desarrollo Web">
+        <a>Twitter</a>
+      </Card>
     </>
   );
 }
