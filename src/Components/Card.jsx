@@ -1,12 +1,12 @@
-const Card = ({ title, text, children }) => {
-  //   console.log(props);
-  console.log(title, text, children);
-  //   const { title, text } = props;
+import CardStyles from "../styles/Card.module.css";
+
+const Card = ({ pizza }) => {
+  const { tipo, img, precio } = pizza;
   return (
-    <div className="card-container">
-      <h3>{title}</h3>
-      <p>{text}</p>
-      {children}
+    <div className={CardStyles.cardContainer}>
+      <img src={img} alt={tipo} />
+      <h3>{tipo}</h3>
+      <h4>{precio}</h4>
     </div>
   );
 };
