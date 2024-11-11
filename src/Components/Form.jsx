@@ -2,8 +2,8 @@ import { useState } from "react";
 import Message from "./Message";
 
 const Form = () => {
-  //   const [nombre, setNombre] = useState("");
-  //   const [direccion, setDireccion] = useState("");
+  // const [nombre, setNombre] = useState("");
+  // const [direccion, setDireccion] = useState("");
   const [user, setUser] = useState({
     nombre: "",
     direccion: "",
@@ -14,9 +14,16 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const regexNum = /[0-9]/;
+    let regex = /^\s/;
+    // trim()
+    // trimStart()
+    // !user.nombre.startsWith(" ") -> true
+    // !regex.test(user.nombre)
+    // user.nombre[0] !== " "
+
     console.log(regexNum.test(user.direccion));
     if (
-      user.nombre.length >= 3 &&
+      user.nombre.trim().length >= 3 &&
       user.direccion.includes(" ") &&
       regexNum.test(user.direccion)
     ) {
