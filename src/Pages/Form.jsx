@@ -1,27 +1,19 @@
 import { useState } from "react";
-import Message from "./Message";
+import Message from "../Components/Message";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
-  // const [nombre, setNombre] = useState("");
-  // const [direccion, setDireccion] = useState("");
   const [user, setUser] = useState({
     nombre: "",
     direccion: "",
   });
   const [show, setShow] = useState(false);
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const regexNum = /[0-9]/;
-    let regex = /^\s/;
-    // trim()
-    // trimStart()
-    // !user.nombre.startsWith(" ") -> true
-    // !regex.test(user.nombre)
-    // user.nombre[0] !== " "
-
-    console.log(regexNum.test(user.direccion));
     if (
       user.nombre.trim().length >= 3 &&
       user.direccion.includes(" ") &&
@@ -29,6 +21,9 @@ const Form = () => {
     ) {
       setShow(true);
       setError(false);
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
     } else {
       setError(true);
     }
@@ -70,18 +65,3 @@ const Form = () => {
 };
 
 export default Form;
-
-// form.addEventListener('submit', (evento) => {
-//     evento.preventDefault()
-// })
-
-//Operador tenario
-// if (condicion) {
-//   //Entra acá si la condición da true
-// } else {
-//   //Entra acá si la condición da false
-// }
-
-// {
-//   condicion ? true : false;
-// }

@@ -8,3 +8,6 @@
 .navbar h4 {
   color: #fff;
 }
+.navbar a {
+  text-decoration: none;
+}

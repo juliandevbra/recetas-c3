@@ -1,29 +1,27 @@
 import "./styles/App.css";
-import Home from "./Components/Home";
+import Home from "./Pages/Home";
 import Navbar from "./Components/Navbar";
-import Form from "./Components/Form";
-import FetchExample from "./Clase 10/FetchExample";
-import AxiosExample from "./Clase 10/AxiosExample";
-
-const titleStyles = {
-  backgroundColor: "#ffda92",
-  color: "firebrick",
-  width: "40%",
-  margin: "10px auto",
-  borderRadius: "10px",
-};
+import Form from "./Pages/Form";
+import { Route, Routes } from "react-router-dom";
+import Cart from "./Pages/Cart";
+import Detail from "./Pages/Detail";
 
 function App() {
   return (
     <>
-      {/* <FetchExample /> */}
-      {/* <AxiosExample /> */}
       <Navbar />
-      <h1 style={titleStyles}>Bienvenidos al proyecto recetas</h1>
-      <Form />
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/envio" element={<Form />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="*" element={<h1>Page not found - Error 404</h1>} />
+      </Routes>
     </>
   );
 }
 
 export default App;
+
+// http://localhost:5173/pagos
+// https://www.mercadolibre.com/pagos
