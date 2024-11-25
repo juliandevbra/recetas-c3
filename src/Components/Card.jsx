@@ -2,10 +2,12 @@ import { useState } from "react";
 import CardStyles from "../styles/Card.module.css";
 import Counter from "./Counter";
 import { Link } from "react-router-dom";
+import { useRecipeStates } from "../Context/Context";
 
-const Card = ({ recipe, cart, setCart }) => {
+const Card = ({ recipe }) => {
   const { title, image, pricePerServing, id } = recipe;
   const [counter, setCounter] = useState(0);
+  const { setCart } = useRecipeStates();
   return (
     <div className={CardStyles.cardContainer}>
       <Link to={`/detail/${id}`}>
@@ -16,7 +18,12 @@ const Card = ({ recipe, cart, setCart }) => {
       <Counter counter={counter} setCounter={setCounter} />
       <button
         disabled={counter === 0}
-        onClick={() => setCart([...cart, recipe])}
+        onClick={() =>
+          setCart((prevState) => [
+            ...prevState,
+            { ...recipe, counter: counter },
+          ])
+        }
       >
         Agregar al 🛒
       </button>
@@ -25,3 +32,7 @@ const Card = ({ recipe, cart, setCart }) => {
 };
 
 export default Card;
+
+// setEstado((estado) => {
+//   return { ...estado, valorNuevo };
+// });
