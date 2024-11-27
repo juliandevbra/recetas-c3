@@ -9,13 +9,13 @@ const titleStyles = {
   borderRadius: "10px",
 };
 const Home = () => {
-  const { recipes } = useRecipeStates();
+  const { state } = useRecipeStates();
 
   return (
     <>
       <h1 style={titleStyles}>Bienvenidos al proyecto recetas</h1>
       <div className="list-container">
-        {recipes.map((recipe) => (
+        {state.recipes.map((recipe) => (
           <Card key={recipe.id} recipe={recipe} />
         ))}
       </div>

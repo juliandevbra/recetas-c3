@@ -7,7 +7,7 @@ import { useRecipeStates } from "../Context/Context";
 const Card = ({ recipe }) => {
   const { title, image, pricePerServing, id } = recipe;
   const [counter, setCounter] = useState(0);
-  const { setCart } = useRecipeStates();
+  const { dispatch } = useRecipeStates();
   return (
     <div className={CardStyles.cardContainer}>
       <Link to={`/detail/${id}`}>
@@ -18,11 +18,16 @@ const Card = ({ recipe }) => {
       <Counter counter={counter} setCounter={setCounter} />
       <button
         disabled={counter === 0}
-        onClick={() =>
-          setCart((prevState) => [
-            ...prevState,
-            { ...recipe, counter: counter },
-          ])
+        onClick={
+          () =>
+            dispatch({
+              type: "ADD_CART",
+              payload: { ...recipe, counter: counter },
+            })
+          // setCart((prevState) => [
+          //   ...prevState,
+          //   { ...recipe, counter: counter },
+          // ])
         }
       >
         Agregar al 🛒
