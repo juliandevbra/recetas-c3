@@ -12,18 +12,19 @@ const initialState = {
 const Context = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   console.log(state);
-  // const [cart, setCart] = useState([]);
-  // const [recipes, setRecipes] = useState([]);
-  // console.log(cart);
-  const url = `https://api.spoonacular.com/recipes/random?number=10&apiKey=${
+
+  const url = `https://api.spoonacular.com/recipes/rando?number=10&apiKey=${
     import.meta.env.VITE_API_KEY
   }`;
   useEffect(() => {
-    axios(url).then((res) => {
-      console.log(res.data.recipes);
-      dispatch({ type: "GET_RECIPES", payload: res.data.recipes });
-      // setRecipes(res.data.recipes);
-    });
+    axios(url)
+      .then((res) => {
+        console.log(res.data.recipes);
+        dispatch({ type: "GET_RECIPES", payload: res.data.recipes });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
